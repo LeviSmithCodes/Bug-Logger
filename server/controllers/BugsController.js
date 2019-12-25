@@ -9,6 +9,7 @@ export default class BugController {
       .get("", this.getAll)
       .get("/:id", this.getById)
       .put("/:id", this.edit)
+      .delete("/:id", this.delete)
       .post("", this.create);
   }
 
@@ -43,6 +44,15 @@ export default class BugController {
     try {
       let data = await bugService.create(req.body);
       return res.status(201).send(data);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async delete(req, res, next) {
+    try {
+      await bugService.delete(req.params.id);
+      return res.send("Successfully Closed");
     } catch (error) {
       next(error);
     }

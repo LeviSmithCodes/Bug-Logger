@@ -5,6 +5,15 @@ import ApiError from "../utils/ApiError";
 const _repository = mongoose.model("Bug", Bug);
 
 class BugService {
+  async delete(id) {
+    let data = await _repository.findOneAndUpdate(
+      { _id: id },
+      { closed: true }
+    );
+    if (!data) {
+      throw new ApiError("Invalid Id", 400);
+    }
+  }
   async edit(id, update) {
     let data = await _repository.findById(id);
 
@@ -13,8 +22,9 @@ class BugService {
     }
 
     console.log(data);
+    // @ts-ignore this works, it just doesn't know it
     if (data.closed == false) {
-      data = await _repository.findOneAndUpdate({ _id: id }, update); // NOTE what does the {_id: id} bit do? _id comes from the server, yes?
+      data = await _repository.findOneAndUpdate({ _id: id }, update); // NOTE what does the {_id: id} bit do? _id comes from the server, yes? I think it ties the two together or sets one to the other
     } else {
       throw new ApiError("Cannot edit closed bug", 403);
     }
