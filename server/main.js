@@ -40,7 +40,7 @@ import NotesController from "./controllers/NotesController";
 
 //NOTE remember the forward slash at the start of your path!
 server.use("/api/bugs", new BugsController().router);
-// server.use("/api/bugs/:id/notes", new NotesController().router);
+server.use("/api/notes", new NotesController().router);
 
 //NOTE Everything below this line always stays the same
 

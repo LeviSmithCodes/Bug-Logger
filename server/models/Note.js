@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
-const ObjectId = Schema.Types.ObjectId;
+const ObjectId = Schema.Types.ObjectId; // NOTE this makes ObjectId an available type
 
 var Note = new Schema(
   {
