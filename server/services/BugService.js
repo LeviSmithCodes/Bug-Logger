@@ -38,6 +38,7 @@ class BugService {
     }
     return data;
   }
+
   async create(rawData) {
     let data = await _repository.create(rawData);
     return data;

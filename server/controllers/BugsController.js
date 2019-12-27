@@ -1,5 +1,6 @@
 import express from "express";
-import bugService from "../services/bugService";
+import bugService from "../services/BugService"; // the location had a lowercase b?
+import noteService from "../services/NoteService"; // NOTE can import a service into another controller!!
 
 export default class BugController {
   constructor() {
@@ -8,6 +9,7 @@ export default class BugController {
       //NOTE  each route gets registered as a .get, .post, .put, or .delete, the first parameter of each method is a string to be concatinated onto the base url registered with the route in main. The second parameter is the method that will be run when this route is hit.
       .get("", this.getAll)
       .get("/:id", this.getById)
+      .get("/:id/notes", this.getNotesByBugId)
       .put("/:id", this.edit)
       .delete("/:id", this.delete)
       .post("", this.create);
@@ -16,6 +18,15 @@ export default class BugController {
   async getAll(req, res, next) {
     try {
       let data = await bugService.getAll();
+      return res.send(data);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async getNotesByBugId(req, res, next) {
+    try {
+      let data = await noteService.getNotesByBugId(req.params.id);
       return res.send(data);
     } catch (error) {
       next(error);
