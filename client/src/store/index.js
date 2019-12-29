@@ -21,6 +21,9 @@ export default new Vuex.Store({
     },
     setActiveBug(state, data) {
       state.activeBug = data;
+    },
+    addBug(state, data) {
+      state.bugs.push(data);
     }
   },
   actions: {
@@ -32,6 +35,10 @@ export default new Vuex.Store({
     async getActiveBug({ commit, dispatch }, id) {
       let res = await _myServer.get("bugs/" + id);
       commit("setActiveBug", res.data);
+    },
+    async createBug({ commit, dispatch }, bug) {
+      let res = await _myServer.post("bugs", bug);
+      commit("addBug", res.data);
     }
   },
   modules: {}
