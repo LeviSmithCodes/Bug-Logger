@@ -1,8 +1,18 @@
 <template>
-  <div class="home">
+  <div class="home container-fluid">
     <!-- <img alt="Vue logo" src="../assets/logo.png" /> -->
-    <h1>THIS IS A FRONT END LOL</h1>
-    <p>{{ bugs }}</p>
+    <div class="row">
+      <div class="col-12 bug-contents">
+        <h1>THIS IS A FRONT END LOL</h1>
+        <p v-for="bug in bugs" :key="bug._id">
+          Bug:
+          <router-link :to="{ name: 'bug', params: {id: bug._id}}">{{ bug.title }}</router-link>
+          <br />
+          Description: {{ bug.description }}
+        </p>
+      </div>
+    </div>
+
     <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
   </div>
 </template>
@@ -26,3 +36,13 @@ export default {
   // }
 };
 </script>
+
+<style>
+h1 {
+  /* justify-content: center !important; */
+}
+.bug-contents {
+  /* justify-content: left; */
+  /* color: red; */
+}
+</style>

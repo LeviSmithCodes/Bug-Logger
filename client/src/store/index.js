@@ -18,6 +18,9 @@ export default new Vuex.Store({
   mutations: {
     setAllBugs(state, data) {
       state.bugs = data;
+    },
+    setActiveBug(state, data) {
+      state.activeBug = data;
     }
   },
   actions: {
@@ -25,6 +28,10 @@ export default new Vuex.Store({
       let res = await _myServer.get("bugs");
       console.log(res.data);
       commit("setAllBugs", res.data); // not data.data because we're not on the herokuapp sandbox
+    },
+    async getActiveBug({ commit, dispatch }, id) {
+      let res = await _myServer.get("bugs/" + id);
+      commit("setActiveBug", res.data);
     }
   },
   modules: {}
