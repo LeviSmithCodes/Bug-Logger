@@ -39,6 +39,7 @@ export default new Vuex.Store({
     async createBug({ commit, dispatch }, bug) {
       let res = await _myServer.post("bugs", bug);
       commit("addBug", res.data);
+      commit("setActiveBug", res.data); // attempt to make new bug the active one
     }
   },
   modules: {}

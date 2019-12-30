@@ -117,9 +117,9 @@ export default {
     };
   },
   methods: {
-    createBug() {
+    async createBug() {
       let bug = { ...this.newBug };
-      this.$store.dispatch("createBug", bug);
+      await this.$store.dispatch("createBug", bug); // the rest of the function was running before active bug was made
       this.newBug = {
         title: "",
         description: "",
@@ -127,6 +127,9 @@ export default {
         closed: false,
         closedDate: ""
       };
+      let myActiveBug = this.$store.state.activeBug;
+      console.log(myActiveBug);
+      this.$router.push({ name: "bug", params: { id: myActiveBug._id } });
     }
   },
   computed: {
