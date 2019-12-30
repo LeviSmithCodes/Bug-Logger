@@ -54,8 +54,9 @@
           data-show-search-clear-button="true"
           class="table table-striped table-hover"
           style="width:100%"
-          data-toggle="table"
+          data-toggle="false"
         >
+          <!-- changed data toggle from table to false to get filtering to work (??) -->
           <thead>
             <tr>
               <th data-field="title">Title</th>
@@ -84,10 +85,25 @@
 // @ is an alias to /src
 // import HelloWorld from "@/components/HelloWorld.vue";
 
+// $(function() {
+//   $("#table").bootstrapTable();
+// });
+
 export default {
   name: "home",
   mounted() {
     this.$store.dispatch("getAllBugs");
+
+    // setTimeout(
+    //   function() {
+    //     this.$store.dispatch("getAllBugs");
+    //   }.bind(this),
+    //   5000
+    // );
+
+    // $(function() {
+    //   $("#table").bootstrapTable();
+    // });
   },
   data() {
     return {
@@ -124,19 +140,17 @@ export default {
 };
 
 // NOTE excuse me WHAT the HECK commenting this out and then in makes it work perfectly. What's blocking it / resetting it???
-$(function() {
+
+// $(function() {
+//   $("#table").bootstrapTable();
+// });
+
+setTimeout(function() {
   $("#table").bootstrapTable();
-});
+}, 1000);
 </script>
 
 <style>
-h1 {
-  /* justify-content: center !important; */
-}
-.bug-contents {
-  /* justify-content: left; */
-  /* color: red; */
-}
 table,
 th,
 td {
