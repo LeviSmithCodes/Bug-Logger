@@ -66,7 +66,7 @@
               <th data-field="closed" data-filter-control="select">
                 Closed Status
               </th>
-              <th data-field="modifiedDate">
+              <th data-field="modifiedDate" data-sortable="true">
                 Modified Date
               </th>
             </tr>
