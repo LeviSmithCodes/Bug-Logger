@@ -8,7 +8,8 @@ var Bug = new Schema(
     description: { type: String, required: true },
     title: { type: String, required: true },
     reportedBy: { type: String, required: true }, //The provided name for who reported the bug
-    closedDate: { type: Date }
+    closedDate: { type: Date },
+    modifiedDate: { type: Date }
   },
   { timestamps: true, toJSON: { virtuals: true } }
 );

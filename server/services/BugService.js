@@ -8,7 +8,7 @@ class BugService {
   async delete(id) {
     let data = await _repository.findOneAndUpdate(
       { _id: id },
-      { closed: true }
+      { closed: true, modifiedDate: new Date() }
     );
     if (!data) {
       throw new ApiError("Invalid Id", 400);

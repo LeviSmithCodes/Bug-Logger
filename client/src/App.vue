@@ -1,5 +1,8 @@
 <template>
   <div id="app">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="http://localhost:8080/#/">Home</a>
+    </nav>
     <!-- <div id="nav">
       <router-link to="/">Home</router-link>
       <router-link to="/about">About</router-link>

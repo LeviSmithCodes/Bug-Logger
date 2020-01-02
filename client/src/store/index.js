@@ -40,6 +40,17 @@ export default new Vuex.Store({
       let res = await _myServer.post("bugs", bug);
       commit("addBug", res.data);
       commit("setActiveBug", res.data); // attempt to make new bug the active one
+    },
+    async closeBug({ commit, dispatch }, id) {
+      let res = await _myServer.delete("bugs/" + id);
+      // commit("closeBug", res.data) // Do I need anything here? Probably refreshing page. NOTE how do I accomplish this? by putting this.$router.go() in bug.vue > methods > closeBug of course
+      // commit("setActiveBug", res.data);
+      // this.$forceUpdate();
+    },
+    async editBug({ commit, dispatch }, updatedBug) {
+      debugger;
+      let res = await _myServer.put("bugs/" + updatedBug.id, updatedBug);
+      console.log(res);
     }
   },
   modules: {}

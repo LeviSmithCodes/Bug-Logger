@@ -60,17 +60,30 @@
           <thead>
             <tr>
               <th data-field="title">Title</th>
-              <th data-field="reportedBy" data-filter-control="select">Reported By</th>
-              <th data-field="closed" data-filter-control="select">Closed Status</th>
+              <th data-field="reportedBy" data-filter-control="select">
+                Reported By
+              </th>
+              <th data-field="closed" data-filter-control="select">
+                Closed Status
+              </th>
+              <th data-field="modifiedDate">
+                Modified Date
+              </th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="bug in bugs" :key="bug._id">
               <td>
-                <router-link :to="{ name: 'bug', params: {id: bug._id}}">{{ bug.title }}</router-link>
+                <router-link :to="{ name: 'bug', params: { id: bug._id } }">{{
+                  bug.title
+                }}</router-link>
               </td>
-              <td>{{bug.reportedBy}}</td>
-              <td>{{bug.closed}}</td>
+              <td>{{ bug.reportedBy }}</td>
+              <td v-bind:class="{ 'text-danger': bug['closed'] }">
+                {{ bug.closed }}
+              </td>
+              <td>{{ bug.modifiedDate | formatDate }}</td>
+              <!-- <td>{{bug.closed}}</td> -->
             </tr>
           </tbody>
         </table>
@@ -119,6 +132,7 @@ export default {
   methods: {
     async createBug() {
       let bug = { ...this.newBug };
+      bug.modifiedDate = new Date();
       await this.$store.dispatch("createBug", bug); // the rest of the function was running before active bug was made
       this.newBug = {
         title: "",
@@ -128,7 +142,6 @@ export default {
         closedDate: ""
       };
       let myActiveBug = this.$store.state.activeBug;
-      console.log(myActiveBug);
       this.$router.push({ name: "bug", params: { id: myActiveBug._id } });
     }
   },
