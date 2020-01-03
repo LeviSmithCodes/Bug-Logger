@@ -24,6 +24,9 @@ export default new Vuex.Store({
     },
     addBug(state, data) {
       state.bugs.push(data);
+    },
+    setNotes(state, data) {
+      state.notes.push(...data);
     }
   },
   actions: {
@@ -51,6 +54,10 @@ export default new Vuex.Store({
       debugger;
       let res = await _myServer.put("bugs/" + updatedBug.id, updatedBug);
       console.log(res);
+    },
+    async getNotes({ commit, dispatch }, bugId) {
+      let res = await _myServer.get("bugs/" + bugId + "/notes");
+      commit("setNotes", res.data);
     }
   },
   modules: {}
