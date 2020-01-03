@@ -19,7 +19,17 @@ class NoteService {
 
   async getNotesByBugId(bugId) {
     // does this belong in bugService or Notes? Reference Taskmaster? Hackathon project? => I can import the noteService into the BugsController!
-    return await _repository.find({ bugId });
+    // console.log(bugId);
+    // debugger;
+    let data = await _repository.find(); // TODO
+    // debugger;
+    if (!data) {
+      throw new ApiError("Could not find notes for bug");
+    }
+    return data;
+    // console.log(data);
+    // debugger;
+    // return data;
   }
 }
 

@@ -12,6 +12,9 @@
     <br />
     Closed Status: {{ bug.closed }}
     <br />
+    <h4>Notes:</h4>
+    <notes />
+    <br />
     <hr />
     <br />
     <h4>Edit the bug</h4>
@@ -49,6 +52,7 @@
 </template>
 
 <script>
+import Notes from "../components/Notes";
 export default {
   name: "bug",
   mounted() {
@@ -95,7 +99,7 @@ export default {
         bug.modifiedDate = new Date();
         console.log(bug);
         // console.log(this.$route.params.id);
-        debugger;
+        // debugger;
         await this.$store.dispatch("editBug", bug);
       } catch (error) {
         console.error(error);
@@ -106,6 +110,9 @@ export default {
     bug() {
       return this.$store.state.activeBug;
     }
+  },
+  components: {
+    Notes
   }
   // components: {
   //   title: null,
