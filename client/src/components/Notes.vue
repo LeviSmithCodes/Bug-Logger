@@ -3,13 +3,7 @@
     <form @submit.prevent="createNote" class="d-flex">
       <div class="form-group">
         <label for="content">Note</label>
-        <input
-          v-model="newNote.content"
-          id="content"
-          type="text"
-          placeholder="Add Note"
-          required
-        />
+        <input v-model="newNote.content" id="content" type="text" placeholder="Add Note" required />
       </div>
       <br />
       <div class="form-group">
@@ -26,17 +20,15 @@
       </div>
     </form>
     <div v-for="note in notes" :key="note._id">
-      Note:
+      <br />
+      <b>Note:</b>
       {{ note.content }}
       <br />
-      Reported By:
+      <b>Reported By:</b>
       {{ note.reportedBy }}
       <br />
-      Status:
+      <b>Status:</b>
       {{ note.flagged }}
-      <br />
-      Associated Bug:
-      {{ note.bug }}
       <br />
     </div>
   </div>
@@ -48,6 +40,7 @@ export default {
   mounted() {
     // console.log(this.$route.params.id);
     // debugger;
+    this.$store.state.notes = []; // clears out store, otherwise notes multiply and travel
     this.$store.dispatch("getNotes", this.$route.params.id);
   },
   computed: {
