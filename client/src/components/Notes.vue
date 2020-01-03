@@ -62,8 +62,8 @@ export default {
       note.bug = this.$route.params.id;
       note.flagged = "pending";
       this.$store.dispatch("createNote", note);
-      this.content = "";
-      this.reportedBy = "";
+      this.newNote.content = "";
+      this.newNote.reportedBy = "";
     }
   }
 };
