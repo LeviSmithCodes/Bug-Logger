@@ -22,7 +22,7 @@
     <div v-for="note in notes" :key="note._id">
       <br />
       <b>Note:</b>
-      {{ note.content }} | {{ note._id }}
+      {{ note.content }}
       <br />
       <b>Reported By:</b>
       {{ note.reportedBy }}

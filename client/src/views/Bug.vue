@@ -2,22 +2,30 @@
   <div class="bug container-fluid">
     <h4>Bug Details</h4>
     <br />
-    Title: {{ bug.title }}
+    <b>Title:</b>
+    {{ bug.title }}
     <br />
-    Description: {{ bug.description }}
+    <b>Description:</b>
+    {{ bug.description }}
     <br />
-    Reported By: {{ bug.reportedBy }}
+    <b>Reported By:</b>
+    {{ bug.reportedBy }}
     <br />
-    Last modified on: {{ bug.modifiedDate | formatDate }}
+    <b>Last modified on:</b>
+    {{ bug.modifiedDate | formatDate }}
     <br />
-    Closed Status: {{ bug.closed }}
+    <b>Closed Status:</b>
+    {{ bug.closed }}
+    <br />
+    <br />
+    <hr />
     <br />
     <h4>Notes:</h4>
     <notes />
     <br />
     <hr />
     <br />
-    <h4>Edit the bug</h4>
+    <h4>Edit the bug (if open)</h4>
     <form @submit="editBug(bug)">
       <div class="form-group">
         <label for="title">Title</label>
@@ -41,13 +49,9 @@
           required
         />
       </div>
-      <button class="btn btn-info" type="submit">
-        Edit Bug
-      </button>
+      <button class="btn btn-info" type="submit">Edit Bug</button>
     </form>
-    <button class="btn btn-danger" type="button" @click="closeBug">
-      Close Bug
-    </button>
+    <button class="btn btn-danger" type="button" @click="closeBug">Close Bug</button>
   </div>
 </template>
 

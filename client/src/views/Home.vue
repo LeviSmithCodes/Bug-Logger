@@ -3,14 +3,17 @@
     <!-- <img alt="Vue logo" src="../assets/logo.png" /> -->
     <div class="row">
       <div class="col-12 bug-contents">
-        <h1>THIS IS A FRONT END LOL</h1>
+        <br />
+        <h1>Bug-Logger</h1>
+        <br />
         <!-- <p v-for="bug in bugs" :key="bug._id">
           Bug:
           <router-link :to="{ name: 'bug', params: {id: bug._id}}">{{ bug.title }}</router-link>
           <br />
           Description: {{ bug.description }}
         </p>-->
-
+        <hr />
+        <h4>Add a bug:</h4>
         <form @submit.prevent="createBug" class="d-flex">
           <div class="form-group">
             <label for="title">Title</label>
@@ -60,28 +63,22 @@
           <thead>
             <tr>
               <th data-field="title">Title</th>
-              <th data-field="reportedBy" data-filter-control="select">
-                Reported By
-              </th>
-              <th data-field="closed" data-filter-control="select">
-                Closed Status
-              </th>
-              <th data-field="modifiedDate" data-sortable="true">
-                Modified Date
-              </th>
+              <th data-field="reportedBy" data-filter-control="select">Reported By</th>
+              <th data-field="closed" data-filter-control="select">Closed Status</th>
+              <th data-field="modifiedDate" data-sortable="true">Modified Date</th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="bug in bugs" :key="bug._id">
               <td>
-                <router-link :to="{ name: 'bug', params: { id: bug._id } }">{{
+                <router-link :to="{ name: 'bug', params: { id: bug._id } }">
+                  {{
                   bug.title
-                }}</router-link>
+                  }}
+                </router-link>
               </td>
               <td>{{ bug.reportedBy }}</td>
-              <td v-bind:class="{ 'text-danger': bug['closed'] }">
-                {{ bug.closed }}
-              </td>
+              <td v-bind:class="{ 'text-danger': bug['closed'] }">{{ bug.closed }}</td>
               <td>{{ bug.modifiedDate | formatDate }}</td>
               <!-- <td>{{bug.closed}}</td> -->
             </tr>

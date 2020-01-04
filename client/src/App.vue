@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="http://localhost:8080/#/" @click="reloadPage">Home</a>
     </nav>
     <!-- <div id="nav">
