@@ -21,6 +21,7 @@ export default class NoteController {
 
   async delete(req, res, next) {
     try {
+      debugger;
       await noteService.delete(req.params.id);
       return res.send("Successfully Deleted Note");
     } catch (error) {

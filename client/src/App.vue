@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="http://localhost:8080/#/">Home</a>
+      <a class="navbar-brand" href="http://localhost:8080/#/" @click="reloadPage">Home</a>
     </nav>
     <!-- <div id="nav">
       <router-link to="/">Home</router-link>
@@ -10,6 +10,18 @@
     <router-view />
   </div>
 </template>
+
+<script>
+export default {
+  methods: {
+    reloadPage() {
+      setTimeout(function() {
+        $("#table").bootstrapTable();
+      }, 1000);
+    }
+  }
+};
+</script>
 
 <style>
 #app {

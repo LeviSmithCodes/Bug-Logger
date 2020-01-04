@@ -22,13 +22,15 @@
     <div v-for="note in notes" :key="note._id">
       <br />
       <b>Note:</b>
-      {{ note.content }}
+      {{ note.content }} | {{ note._id }}
       <br />
       <b>Reported By:</b>
       {{ note.reportedBy }}
       <br />
       <b>Status:</b>
       {{ note.flagged }}
+      <br />
+      <button class="btn btn-danger" type="button" @click="deleteNote(note._id)">Delete Note</button>
       <br />
     </div>
   </div>
@@ -64,6 +66,30 @@ export default {
       this.$store.dispatch("createNote", note);
       this.newNote.content = "";
       this.newNote.reportedBy = "";
+    },
+    async deleteNote(noteId) {
+      this.$swal({
+        title: "Are you sure?",
+        text: "You can't undo deleting a note",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Delete the note!",
+        cancelButtonText: "Keep the note",
+        showCloseButton: true,
+        showLoaderOnConfirm: true
+      }).then(result => {
+        if (result.value) {
+          this.$swal(
+            "Deleted",
+            "You successfully deleted this note",
+            "success"
+          );
+          this.$store.dispatch("deleteNote", noteId);
+          this.$router.go(); // refreshes page?
+        } else {
+          this.$swal("Cancelled", "Your note still exists", "info");
+        }
+      });
     }
   }
 };
