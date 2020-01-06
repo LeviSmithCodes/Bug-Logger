@@ -54,7 +54,7 @@ export default new Vuex.Store({
       // this.$forceUpdate();
     },
     async editBug({ commit, dispatch }, updatedBug) {
-      debugger;
+      // debugger;
       let res = await _myServer.put("bugs/" + updatedBug.id, updatedBug);
       console.log(res);
     },

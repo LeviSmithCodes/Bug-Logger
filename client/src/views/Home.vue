@@ -48,7 +48,7 @@
               required
             />
           </div>
-          <button class="btn btn-outline-success" type="submit">Add Bug</button>
+          <button class="btn btn-outline-success m-3" type="submit">Add Bug</button>
         </form>
 
         <table
@@ -174,5 +174,9 @@ td {
 
 tr:nth-child(even) {
   background-color: #e0e0e0;
+}
+
+.form-group {
+  margin: 15px;
 }
 </style>

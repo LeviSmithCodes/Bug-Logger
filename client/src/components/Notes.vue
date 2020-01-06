@@ -2,12 +2,12 @@
   <div class="notes">
     <form @submit.prevent="createNote" class="d-flex">
       <div class="form-group">
-        <label for="content">Note</label>
+        <label for="content">Note:</label>
         <input v-model="newNote.content" id="content" type="text" placeholder="Add Note" required />
       </div>
       <br />
       <div class="form-group">
-        <label for="reportedBy">Reported By</label>
+        <label for="reportedBy">Reported By:</label>
         <input
           v-model="newNote.reportedBy"
           id="reportedBy"
@@ -95,4 +95,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+input {
+  margin: 15px;
+}
+</style>

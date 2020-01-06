@@ -1,5 +1,6 @@
 <template>
   <div class="bug container-fluid">
+    <br />
     <h4>Bug Details</h4>
     <br />
     <b>Title:</b>
@@ -51,7 +52,9 @@
       </div>
       <button class="btn btn-info" type="submit">Edit Bug</button>
     </form>
+    <br />
     <button class="btn btn-danger" type="button" @click="closeBug">Close Bug</button>
+    <br />
   </div>
 </template>
 
